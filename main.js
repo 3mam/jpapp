@@ -61,8 +61,8 @@ let $window = windowId => {
   let win = getElement(windowId)
   findActiveWindow().hidden = true
   win.hidden = false
-  history.replaceState({ window: location.hash }, location.hash)
-  location.hash = `#${win.id}`
+  if (win.getAttribute('ignore') === null)
+    location.hash = `#${win.id}`
 }
 
 let $button = buttonId => {
