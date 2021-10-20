@@ -40,6 +40,7 @@ button {
   display: table;
   user-select: none;
 }
+
 button:read-only {
   color: black;
 } 
@@ -50,17 +51,11 @@ input {
   border-radius: 10px;
 }
 
-button2 {
+.plusminus {
+  margin: 0;
   font-family: monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px solid #db002c;
-  border-radius: 10px;
   width: 10vh;
   height: 7vh;
-  user-select: none;
   font-size: 6vh;
 }
 
@@ -79,8 +74,7 @@ button2 {
   transition: background-color var(--speed);
 }
 
-#quizform {
-  display: table;
+#quizcfg {
   text-align: center;
   margin: 0 auto;
   margin-bottom: 10vh;

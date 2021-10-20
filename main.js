@@ -5,9 +5,11 @@ let baseElement = element => ({
 })
 
 let getElement = id => document.getElementById(id)
+let getElementsByName = name => document.getElementsByName(name)
 
-let findActiveWindow = () => Array.from(document.getElementsByTagName('window'))
-  .filter(v => !v.hidden)[0]
+let findActiveWindow = () =>
+  Array.from(document.getElementsByTagName('window'))
+    .filter(v => !v.hidden)[0]
 
 let findWindows = () => Array.from(document.getElementsByTagName('window'))
 
@@ -22,15 +24,8 @@ let initCustomHtmlTagAttributes = () => {
   })
 }
 
-let $form = formId => option => {
-  let obj = getElement(formId)
-  return {
-    disable: index => obj[option][index].disabled = true,
-    enable: index => obj[option][index].disabled = false,
-    setValue: val => obj[option].value = `${val}`,
-    getValue: () => obj[option].value,
-  }
-}
+let $radio = name =>
+  Array.from(getElementsByName(name)).filter(val => val.checked === true)[0].value
 
 let $element = elementId => {
   let obj = getElement(elementId)
@@ -53,6 +48,8 @@ let $input = inputId => {
     getMin: () => obj.min,
     setMax: val => obj.max = `${val}`,
     getMax: () => obj.max,
+    stepDown: () => obj.stepDown(),
+    stepUp: () => obj.stepUp(),
     ...baseElement(obj),
   }
 }

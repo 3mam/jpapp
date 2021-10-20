@@ -18,20 +18,18 @@
     </window>
 
     <window id="quizcfg">
-      <form id="quizform">
-        <p><b>Select alphabet</b></p>
-        <input type="radio" name="alphabet" id="hiragana" value="hiragana" checked>
-        <label for="hiragana"> Hiragana</label><br>
-        <input type="radio" name="alphabet" id="katakana" value="katakana">
-        <label for="katakana"> Katakana</label>
-        <br>
-        <p><b>How many letters</b></p>
-        <div style="display: flex; justify-content: center;">
-          <button2 id="minus" class="default">-</button2>
-          <input type="number" id="letters" min="1" max="20" value="1">
-          <button2 id="plus" class="default">+</button2>
-        </div>
-      </form>
+      <p><b>Select alphabet</b></p>
+      <input type="radio" name="alphabet" id="hiragana" value="hiragana" checked>
+      <label for="hiragana"> Hiragana</label><br>
+      <input type="radio" name="alphabet" id="katakana" value="katakana">
+      <label for="katakana"> Katakana</label>
+      <br>
+      <p><b>How many letters</b></p>
+      <div style="display: flex; justify-content: center;">
+        <button id="minus" class="plusminus default">-</button>
+        <input type="number" id="letters" min="1" max="20" value="1">
+        <button id="plus" class="plusminus default">+</button>
+      </div>
       <button id="start" class="default">start</button>
     </window>
 

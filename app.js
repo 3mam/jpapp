@@ -52,9 +52,8 @@ let colorButtonSwitch = (alphabet, lettersLength) => {
 }
 
 let setQuizForm = () => {
-  let form = $form('quizform')
-  let alphabet = form('alphabet').getValue()
-  let letters = form('letters').getValue()
+  let alphabet = $radio('alphabet')
+  let letters = $input('letters').getValue()
   let button = colorButtonSwitch(alphabet, letters)
   $button('a').click(button)
   $button('b').click(button)
@@ -63,21 +62,9 @@ let setQuizForm = () => {
   $window('quiz')
 }
 
-let updateLettersLength = (id) => {
-  let input = $input('letters')
-  let value = parseInt(input.getValue())
-  let min = parseInt(input.getMin())
-  let max = parseInt(input.getMax())
-  if (id === 'minus')
-    if (min < value)
-      input.setValue(value - 1)
-  if (id === 'plus')
-    if (max > value)
-      input.setValue(value + 1)
-}
-
 $app(() => {
-  $button('minus').click(updateLettersLength)
-  $button('plus').click(updateLettersLength)
+  let input = $input('letters')
+  $button('minus').click(input.stepDown)
+  $button('plus').click(input.stepUp)
   $button('start').click(setQuizForm)
 })
