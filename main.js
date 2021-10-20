@@ -4,14 +4,15 @@ let baseElement = element => ({
   enable: () => element.disabled = false,
 })
 
-let getElement = id => document.getElementById(id)
+let getElementById = id => document.getElementById(id)
 let getElementsByName = name => document.getElementsByName(name)
+let getElementsByTagName = name => document.getElementsByTagName(name)
 
 let findActiveWindow = () =>
   Array.from(document.getElementsByTagName('window'))
     .filter(v => !v.hidden)[0]
 
-let findWindows = () => Array.from(document.getElementsByTagName('window'))
+let findWindows = () => Array.from(getElementsByTagName('window'))
 
 let initCustomHtmlTagAttributes = () => {
   Array.from(document.body.getElementsByTagName('*')).forEach(v => {
@@ -28,7 +29,7 @@ let $radio = name =>
   Array.from(getElementsByName(name)).filter(val => val.checked === true)[0].value
 
 let $element = elementId => {
-  let obj = getElement(elementId)
+  let obj = getElementById(elementId)
   return {
     opacity: val => obj.style.opacity = `${val}%`,
     setHTML: val => obj.innerHTML = `${val}`,
@@ -40,7 +41,7 @@ let $element = elementId => {
 }
 
 let $input = inputId => {
-  let obj = getElement(inputId)
+  let obj = getElementById(inputId)
   return {
     setValue: val => obj.value = `${val}`,
     getValue: () => obj.value,
@@ -55,7 +56,7 @@ let $input = inputId => {
 }
 
 let $window = windowId => {
-  let win = getElement(windowId)
+  let win = getElementById(windowId)
   findActiveWindow().hidden = true
   win.hidden = false
   if (win.getAttribute('ignore') === null)
@@ -63,7 +64,7 @@ let $window = windowId => {
 }
 
 let $button = buttonId => {
-  let button = getElement(buttonId)
+  let button = getElementById(buttonId)
   return {
     click: fn => button.onclick = () => fn(button.id),
     label: name => button.innerHTML = `${name}`,
